@@ -1,0 +1,3 @@
+curl -su "$TOKEN:" "$URL/api/plugins/installed" \
+  | jq -r '.plugins[] | "\(.key):\(.version)"' \
+  | LC_ALL=C sort | paste -sd'|' - | sha256sum
